@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
 
-export default function TabTwoScreen() {
+import { Text, View } from '../components/Themed';
+import { RootTabScreenProps } from '../types';
+
+export default function ListEventsScreen({ navigation }: RootTabScreenProps<'Events'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Text style={styles.title}>List the events here</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+
     </View>
   );
 }
