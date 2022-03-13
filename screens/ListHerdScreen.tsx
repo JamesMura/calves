@@ -1,18 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
+
 import { Text, View } from '../components/Themed';
+import { RootTabScreenProps } from '../types';
 
-export default function AddCow() {
+export default function ListHerdScreen({ navigation }: RootTabScreenProps<'Herd'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Add A Cow</Text>
+      <Text style={styles.title}>List the herd here</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
 
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
   );
 }

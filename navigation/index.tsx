@@ -12,9 +12,9 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import AddCow from '../screens/AddCow';
+import AddHerdRecord from '../screens/AddHerdRecord';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import ListCowsScreen from '../screens/ListCowsScreen';
+import ListHerdScreen from '../screens/ListHerdScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -43,8 +43,8 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Add a Cow" component={AddCow} />
+      <Stack.Group>
+        <Stack.Screen name="Register a Cow" component={AddHerdRecord} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -61,19 +61,19 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Cows"
+      initialRouteName="Herd"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="Cows"
-        component={ListCowsScreen}
-        options={({ navigation }: RootTabScreenProps<'Cows'>) => ({
-          title: 'Cows',
+        name="Herd"
+        component={ListHerdScreen}
+        options={({ navigation }: RootTabScreenProps<'Herd'>) => ({
+          title: 'Herd',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="cow" size={24} color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Add a Cow')}
+              onPress={() => navigation.navigate('Register a Cow')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
