@@ -1,16 +1,31 @@
-import { StyleSheet } from 'react-native';
-
-
-import { Text, View } from '../components/Themed';
+import React, { useContext, useEffect, useState } from 'react';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import { RootTabScreenProps } from '../types';
+import { Cattle } from '../db/cattle';
+import { DatabaseContext } from '../db/setup';
+import { useFocusEffect } from '@react-navigation/native';
+import { HerdListHeader } from '../components/HerdListHeader';
+import { HerdListItem } from '../components/HerdListItem';
 
 export default function ListHerdScreen({ navigation }: RootTabScreenProps<'Herd'>) {
+  const dbContext = useContext(DatabaseContext);
+  const [cows, setCows] = useState(new Array<Cattle>())
+  const getCows = async () => {
+    setCows(await (dbContext?.database.find("Select * from Cattle")) as Cattle[])
+  }
+  useFocusEffect(
+    React.useCallback(() => {
+      getCows();
+    }, []));
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>List the herd here</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList 
+      data={cows} 
+      style={{ alignSelf: "stretch", margin: 10 }}
+      ListHeaderComponent={HerdListHeader} 
+      renderItem={HerdListItem} 
+      keyExtractor={item => item.id} />
+    </SafeAreaView>
   );
 }
 
