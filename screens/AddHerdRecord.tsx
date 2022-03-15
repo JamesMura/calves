@@ -13,6 +13,56 @@ import { DatabaseContext } from '../db/setup';
 import { ChooseDate } from '../components/ChooseDate';
 import { ErrorMessage } from '../components/ErrorMessage';
 
+const styles = StyleSheet.create({
+  formRow: {
+    flexDirection: 'row',
+    display: 'flex',
+    marginTop: 10,
+    marginBottom: 15,
+    marginRight: 10,
+  },
+  formField: {
+    flex: 5,
+    marginLeft: 10,
+    display: 'flex',
+    // alignItems: 'center'
+  },
+  form: {
+    flex: 5,
+    backgroundColor: 'white',
+  },
+  input: {
+    height: 40,
+    // marginLeft: 10,
+    borderBottomWidth: 1,
+    borderColor: 'grey',
+    // padding: 10,
+  },
+  dateLabel: {
+    // marginLeft: 50
+  },
+  purchaseLabel: {
+    marginLeft: 10,
+    paddingRight: 10,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#0984e3',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+});
+
 export default function AddHerdRecord({
   navigation,
 }: RootStackScreenProps<'Register a Cow'>) {
@@ -305,53 +355,3 @@ export default function AddHerdRecord({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  formRow: {
-    flexDirection: 'row',
-    display: 'flex',
-    marginTop: 10,
-    marginBottom: 15,
-    marginRight: 10,
-  },
-  formField: {
-    flex: 5,
-    marginLeft: 10,
-    display: 'flex',
-    // alignItems: 'center'
-  },
-  form: {
-    flex: 5,
-    backgroundColor: 'white',
-  },
-  input: {
-    height: 40,
-    // marginLeft: 10,
-    borderBottomWidth: 1,
-    borderColor: 'grey',
-    // padding: 10,
-  },
-  dateLabel: {
-    // marginLeft: 50
-  },
-  purchaseLabel: {
-    marginLeft: 10,
-    paddingRight: 10,
-  },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: '#0984e3',
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-});

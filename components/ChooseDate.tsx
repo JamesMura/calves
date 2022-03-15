@@ -10,6 +10,23 @@ interface ChooseDateParams {
   label: string;
 }
 
+export const styles = StyleSheet.create({
+  dateInput: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    height: 40,
+    fontSize: 14,
+    borderBottomWidth: 1,
+    borderColor: 'grey',
+  },
+  calendarButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+});
+
 export function ChooseDate(props: React.PropsWithChildren<ChooseDateParams>) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [dateValue, setDateValue] = useState(props.value);
@@ -58,20 +75,3 @@ export function ChooseDate(props: React.PropsWithChildren<ChooseDateParams>) {
     </View>
   );
 }
-
-export const styles = StyleSheet.create({
-  dateInput: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    height: 40,
-    fontSize: 14,
-    borderBottomWidth: 1,
-    borderColor: 'grey',
-  },
-  calendarButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-});

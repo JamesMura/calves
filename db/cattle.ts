@@ -1,9 +1,4 @@
-import {
-  IBaseModule,
-  TableStructor,
-  ColumnType,
-  IQueryResultItem,
-} from 'expo-sqlite-wrapper';
+import { IBaseModule, TableStructor, ColumnType } from 'expo-sqlite-wrapper';
 
 export type TableNames = 'Cattle';
 

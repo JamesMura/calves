@@ -1,8 +1,4 @@
-import createDbContext, {
-  IDatabase,
-  IQueryResultItem,
-  IBaseModule,
-} from 'expo-sqlite-wrapper';
+import createDbContext, { IDatabase } from 'expo-sqlite-wrapper';
 import * as SQLite from 'expo-sqlite';
 import { createContext } from 'react';
 import { Cattle, TableNames } from './cattle';
