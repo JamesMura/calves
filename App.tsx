@@ -5,12 +5,13 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import { Database, DatabaseContext } from './db/setup';
-const db = new Database()
+
+const db = new Database();
 export default function App() {
   useEffect(() => {
     const firstRun = async () => {
       await db.database.setUpDataBase();
-    }
+    };
     firstRun();
   }, []);
   const isLoadingComplete = useCachedResources();
@@ -18,14 +19,13 @@ export default function App() {
 
   if (!isLoadingComplete) {
     return null;
-  } else {
-    return (
-      <DatabaseContext.Provider value={db}>
-        <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar />
-        </SafeAreaProvider>
-      </DatabaseContext.Provider>
-    );
   }
+  return (
+    <DatabaseContext.Provider value={db}>
+      <SafeAreaProvider>
+        <Navigation colorScheme={colorScheme} />
+        <StatusBar />
+      </SafeAreaProvider>
+    </DatabaseContext.Provider>
+  );
 }

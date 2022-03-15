@@ -1,16 +1,23 @@
-import createDbContext, { IDatabase, IQueryResultItem, IBaseModule } from 'expo-sqlite-wrapper'
+import createDbContext, {
+  IDatabase,
+  IQueryResultItem,
+  IBaseModule,
+} from 'expo-sqlite-wrapper';
 import * as SQLite from 'expo-sqlite';
-import { Cattle, TableNames } from './cattle';
 import { createContext } from 'react';
-const tables = [Cattle.GetTableStructor()]
+import { Cattle, TableNames } from './cattle';
+
+const tables = [Cattle.GetTableStructor()];
 export class Database {
-  databaseName: string = "calves.db";
+  databaseName = 'calves.db';
+
   database: IDatabase<TableNames>;
+
   constructor() {
-    this.database = createDbContext<TableNames>(tables, async () => SQLite.openDatabase(this.databaseName));
+    this.database = createDbContext<TableNames>(tables, async () =>
+      SQLite.openDatabase(this.databaseName),
+    );
   }
 }
 
-
 export const DatabaseContext = createContext<Database | null>(null);
-

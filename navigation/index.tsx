@@ -5,28 +5,42 @@
  */
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import AddHerdRecord from '../screens/AddHerdRecord';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import ListHerdScreen from '../screens/ListHerdScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import {
+  RootStackParamList,
+  RootTabParamList,
+  RootTabScreenProps,
+} from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons'; 
 import ListExpensesScreen from '../screens/ListExpensesScreen';
 import ListEventsScreen from '../screens/ListEventsScreen';
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+    >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -41,8 +55,16 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: 'Oops!' }}
+      />
       <Stack.Group>
         <Stack.Screen name="Register a Cow" component={AddHerdRecord} />
       </Stack.Group>
@@ -64,19 +86,23 @@ function BottomTabNavigator() {
       initialRouteName="Herd"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
+      }}
+    >
       <BottomTab.Screen
         name="Herd"
         component={ListHerdScreen}
         options={({ navigation }: RootTabScreenProps<'Herd'>) => ({
           title: 'Herd',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="cow" size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cow" size={24} color={color} />
+          ),
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Register a Cow')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
-              })}>
+              })}
+            >
               <FontAwesome
                 name="plus"
                 size={25}
@@ -92,7 +118,13 @@ function BottomTabNavigator() {
         component={ListExpensesScreen}
         options={({ navigation }: RootTabScreenProps<'Expenses'>) => ({
           title: 'Expenses',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="cash-register" size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="cash-register"
+              size={24}
+              color={color}
+            />
+          ),
         })}
       />
       <BottomTab.Screen
@@ -100,7 +132,9 @@ function BottomTabNavigator() {
         component={ListEventsScreen}
         options={{
           title: 'Events',
-          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="calendar" color={color} />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -108,7 +142,9 @@ function BottomTabNavigator() {
         component={SettingsScreen}
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color }) => <Ionicons name="ios-settings-outline" size={24} color={color}/>,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="ios-settings-outline" size={24} color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
