@@ -29,7 +29,6 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
 import ListExpensesScreen from '../screens/ListExpensesScreen';
 import ListEventsScreen from '../screens/ListEventsScreen';
 
@@ -155,7 +154,6 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
